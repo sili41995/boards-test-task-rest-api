@@ -13,13 +13,26 @@ model User {
     email    String  @unique
     password String
     token    String?
-    // boards   Boards[]
+
+    boards Board[]
 }
 
 model Board {
-    id Int @id @default(autoincrement())
+    id    Int    @id @default(autoincrement())
+    title String @unique
+
+    tasks Task[]
+
+    ownerId Int
+    owner   User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 }
 
 model Task {
-    id Int @id @default(autoincrement())
+    id     Int    @id @default(autoincrement())
+    title  String @unique
+    desc   String
+    status String @default("todo")
+
+    boardId Int
+    board   Board @relation(fields: [boardId], references: [id])
 }

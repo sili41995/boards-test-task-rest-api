@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import { authRouter } from './api';
+import { authRouter, boardRouter } from './api';
 import { RouterPaths } from '../constants';
 
 class AppRouter {
@@ -10,6 +10,7 @@ class AppRouter {
       res.send('API Running');
     });
     this.app.use(RouterPaths.auth, authRouter);
+    this.app.use(RouterPaths.boards, boardRouter);
   }
 }
 

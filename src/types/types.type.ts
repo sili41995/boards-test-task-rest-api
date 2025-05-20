@@ -16,3 +16,4 @@ export interface IRegExp {
 export interface IDecodedToken {
   id: number;
 }
+
