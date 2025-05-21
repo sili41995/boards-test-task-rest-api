@@ -17,20 +17,20 @@ const emailSettings = Joi.string().pattern(regExp.email).messages({
   'string.pattern.base': ErrorMessages.emailRegExp,
 });
 
-const registerSchema = Joi.object({
+const signUpSchema = Joi.object({
   name: nameSettings.required(),
   password: passwordSettings.required(),
   email: emailSettings.required(),
 });
 
-const loginSchema = Joi.object({
+const signInSchema = Joi.object({
   password: passwordSettings.required(),
   email: emailSettings.required(),
 });
 
 const schemas = {
-  register: registerSchema,
-  login: loginSchema,
+  signUp: signUpSchema,
+  signIn: signInSchema,
 };
 
 export default schemas;

@@ -1,8 +1,8 @@
 const enum Endpoints {
   root = '/',
-  register = '/register',
-  login = '/login',
-  logout = '/logout',
+  signUp = '/sign-up',
+  signIn = '/sign-in',
+  signOut = '/sign-out',
   current = '/current',
   dynamicId = 'id',
   dynamicToken = 'token',

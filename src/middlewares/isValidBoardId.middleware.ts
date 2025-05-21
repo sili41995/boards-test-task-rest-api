@@ -4,6 +4,7 @@ import { Fields } from '../constants';
 
 const isValidBoardId = (req: Request, res: Response, next: NextFunction): void => {
   const boardId = req.body[Fields.boardId];
+
   const isInvalidId = Number.isNaN(Number(boardId));
 
   if (isInvalidId) {

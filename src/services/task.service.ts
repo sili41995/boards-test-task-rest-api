@@ -6,6 +6,7 @@ import { IMutateByIdProps } from '../types/funcs.type';
 
 class TaskService {
   async getAll({ boardId, ownerId }: IGetAllTasksProps): Promise<Tasks> {
+    console.log(boardId);
     const result = await prisma.task.findMany({
       where: { boardId, ownerId },
       select: {

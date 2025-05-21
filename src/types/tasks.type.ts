@@ -13,7 +13,7 @@ export type Tasks = Pick<Task, 'title' | 'id' | 'status'>[];
 export type NewTask = Omit<Task, 'id' | 'ownerId'>;
 
 export interface IGetAllTasksProps {
-  boardId: number;
+  boardId?: number;
   ownerId: number;
 }
 

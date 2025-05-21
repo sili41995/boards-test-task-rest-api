@@ -11,7 +11,7 @@ export class TaskController {
   async getAll(req: ITaskRequest, res: Response): Promise<void> {
     const { user, boardId } = req;
 
-    if (!user || !boardId) {
+    if (!user) {
       throw httpError({ status: 400 });
     }
 

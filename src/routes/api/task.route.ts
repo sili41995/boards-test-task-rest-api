@@ -14,15 +14,7 @@ const deleteByIdCtrl = ctrlWrapper(taskController.deleteById.bind(taskController
 
 router.get(Endpoints.root, auth, getBoardId, getAllCtrl);
 router.get(Endpoints.rootWithId, isValidId, isTaskExist, auth, getByIdCtrl);
-router.post(
-  Endpoints.root,
-  auth,
-  // validateBody(taskSchemas.add),
-  isNewTask,
-  isValidBoardId,
-  isTaskBoardExist,
-  addCtrl
-);
+router.post(Endpoints.root, auth, validateBody(taskSchemas.add), isNewTask, isValidBoardId, isTaskBoardExist, addCtrl);
 router.put(Endpoints.rootWithId, auth, isValidId, isTaskExist, validateBody(taskSchemas.updateById), updateByIdCtrl);
 router.patch(Endpoints.statusWithId, auth, isValidId, isTaskExist, validateBody(taskSchemas.updateStatusById), updateByIdCtrl);
 router.delete(Endpoints.rootWithId, auth, isValidId, isTaskExist, deleteByIdCtrl);
