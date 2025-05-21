@@ -2,14 +2,16 @@ import { Board } from '@prisma/client';
 import prisma from '../prisma';
 import { httpError } from '../utils';
 import { Boards, IAddNewBoardProps, IUpdateByIdBoardProps } from '../types/boards.type';
-import { IMutateByIdProps } from '../types/funcs';
+import { IMutateByIdProps } from '../types/funcs.type';
 
-class BoardsService {
+class BoardService {
   async getAll(ownerId: number): Promise<Boards> {
-    console.log(ownerId);
-
     const result = await prisma.board.findMany({
       where: { ownerId },
+      select: {
+        id: true,
+        title: true,
+      },
     });
 
     return result;
@@ -32,7 +34,7 @@ class BoardsService {
 
   async add({ newBoard, ownerId }: IAddNewBoardProps): Promise<Board> {
     const data = { ...newBoard, ownerId };
-
+    console.log(data);
     const result = await prisma.board.create({ data });
 
     return result;
@@ -62,4 +64,4 @@ class BoardsService {
   }
 }
 
-export default BoardsService;
+export default BoardService;

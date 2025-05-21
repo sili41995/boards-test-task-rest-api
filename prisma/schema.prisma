@@ -14,7 +14,8 @@ model User {
     password String
     token    String?
 
-    boards Board[]
+    Boards Board[]
+    Tasks  Task[]
 }
 
 model Board {
@@ -33,6 +34,9 @@ model Task {
     desc   String
     status String @default("todo")
 
+    ownerId Int
+    owner   User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
     boardId Int
-    board   Board @relation(fields: [boardId], references: [id])
+    board   Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
 }

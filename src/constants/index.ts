@@ -4,3 +4,6 @@ export { default as ProfileSettings } from './profileSettings';
 export { default as httpErrorMessages } from './httpErrorMessages';
 export { default as regExp } from './regExp';
 export { default as RouterPaths } from './routerPaths';
+export { default as Query } from './query';
+export { default as TaskStatuses } from './taskStatuses';
+export { default as Fields } from './fields';

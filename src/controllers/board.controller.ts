@@ -1,4 +1,4 @@
-import { Response, Request } from 'express';
+import { Response } from 'express';
 import { BoardService } from '../services';
 import { getId, httpError } from '../utils';
 import { IBoardRequest } from '../types/boards.type';
@@ -35,8 +35,14 @@ export class BoardController {
     res.status(200).json(result);
   }
 
-  async add(req: Request, res: Response): Promise<void> {
-    const result = await this.boardService.add(req.body);
+  async add(req: IBoardRequest, res: Response): Promise<void> {
+    const { user, body } = req;
+
+    if (!user) {
+      throw httpError({ status: 400 });
+    }
+
+    const result = await this.boardService.add({ newBoard: body, ownerId: user.id });
 
     res.status(201).json(result);
   }

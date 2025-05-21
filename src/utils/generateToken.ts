@@ -1,5 +1,5 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
-import { IGenerateToken } from '../types/funcs';
+import { IGenerateToken } from '../types/funcs.type';
 
 const generateToken = ({ id, secretKey }: IGenerateToken): string => {
   const payload = { id };

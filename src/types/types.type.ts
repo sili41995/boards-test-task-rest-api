@@ -1,3 +1,7 @@
+import { ParsedQs } from 'qs';
+
+export type TargetQuery = string | ParsedQs | (string | ParsedQs)[] | undefined;
+
 export type HttpErrorMessageStatus = 400 | 401 | 403 | 404 | 409 | 500;
 
 export interface IHttpError {
@@ -16,4 +20,3 @@ export interface IRegExp {
 export interface IDecodedToken {
   id: number;
 }
-

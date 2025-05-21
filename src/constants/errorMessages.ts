@@ -1,6 +1,8 @@
 import ProfileSettings from './profileSettings';
+import TaskStatuses from './taskStatuses';
 
-const enum ErrorMessages {
+enum ErrorMessages {
+  missingFields = 'Missing fields',
   nameReq = 'Missing required name field',
   passwordReq = 'Missing required password field',
   passwordMinLength = `Password length must be at least ${ProfileSettings.passMinLength} characters long`,
@@ -11,6 +13,13 @@ const enum ErrorMessages {
   userNotFound = 'User not found',
   duplicateEmail = 'Email already use',
   incorrectCredentials = 'Email or password is wrong',
+  titleReq = 'Missing required title field',
+  duplicateBoard = 'Board already use',
+  duplicateTask = 'Task already use',
+  descReq = 'Missing required desc field',
+  taskStatusReq = 'Missing required status field',
+  boardIdReq = 'Missing required boardId field',
+  taskStatus = `Value of the status field must be one of these - '${TaskStatuses.done}', '${TaskStatuses.inProgress}', '${TaskStatuses.todo}'`,
 }
 
 export default ErrorMessages;

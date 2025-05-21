@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { auth, ctrlWrapper, isValidId, validateBody } from '../../middlewares';
+import { auth, ctrlWrapper, isBoardExist, isValidId, validateBody, isNewBoard } from '../../middlewares';
 import { boardController } from '../../controllers';
 import { Endpoints } from '../../constants';
-// import { boardsSchemas } from '../../schemas';
+import { boardSchemas } from '../../schemas';
 
 const router: Router = Router();
 
@@ -13,41 +13,9 @@ const updateByIdCtrl = ctrlWrapper(boardController.updateById.bind(boardControll
 const deleteByIdCtrl = ctrlWrapper(boardController.deleteById.bind(boardController));
 
 router.get(Endpoints.root, auth, getAllCtrl);
-router.get(
-  Endpoints.rootWithId,
-  isValidId,
-  // isBoardExist,
-  auth,
-  getByIdCtrl
-);
-router.post(
-  Endpoints.root,
-  auth,
-  // validateBody(boardsSchemas.addSchema),
-  addCtrl
-);
-router.put(
-  Endpoints.rootWithId,
-  auth,
-  isValidId,
-  // isBoardExist,
-  // validateBody(boardsSchemas.updateByIdSchema),
-  updateByIdCtrl
-);
-router.patch(
-  Endpoints.statusWithId,
-  auth,
-  isValidId,
-  // isBoardExist,
-  // validateBody(boardsSchemas.updateStatusByIdSchema),
-  updateByIdCtrl
-);
-router.delete(
-  Endpoints.rootWithId,
-  auth,
-  isValidId,
-  // isBoardExist,
-  deleteByIdCtrl
-);
+router.get(Endpoints.rootWithId, isValidId, isBoardExist, auth, getByIdCtrl);
+router.post(Endpoints.root, auth, validateBody(boardSchemas.add), isNewBoard, addCtrl);
+router.put(Endpoints.rootWithId, auth, isValidId, isBoardExist, validateBody(boardSchemas.updateById), updateByIdCtrl);
+router.delete(Endpoints.rootWithId, auth, isValidId, isBoardExist, deleteByIdCtrl);
 
 export default router;

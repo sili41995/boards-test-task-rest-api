@@ -30,8 +30,8 @@ const loginSchema = Joi.object({
 });
 
 const schemas = {
-  registerSchema,
-  loginSchema,
+  register: registerSchema,
+  login: loginSchema,
 };
 
 export default schemas;

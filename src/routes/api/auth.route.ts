@@ -11,8 +11,8 @@ const loginCtrl = ctrlWrapper(authController.login.bind(authController));
 const logoutCtrl = ctrlWrapper(authController.logout.bind(authController));
 const currentCtrl = ctrlWrapper(authController.current.bind(authController));
 
-router.post(Endpoints.register, validateBody(userSchemas.registerSchema), registerCtrl);
-router.post(Endpoints.login, validateBody(userSchemas.loginSchema), loginCtrl);
+router.post(Endpoints.register, validateBody(userSchemas.register), registerCtrl);
+router.post(Endpoints.login, validateBody(userSchemas.login), loginCtrl);
 router.post(Endpoints.logout, auth, logoutCtrl);
 router.get(Endpoints.current, auth, currentCtrl);
 

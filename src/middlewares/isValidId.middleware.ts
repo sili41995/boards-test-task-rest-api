@@ -7,7 +7,7 @@ const isValidId = (req: Request, res: Response, next: NextFunction): void => {
   const isInvalidId = Number.isNaN(Number(dynamicId));
 
   if (isInvalidId) {
-    return next(httpError({ status: 404, message: `${dynamicId} is not valid id` }));
+    throw httpError({ status: 404, message: `${dynamicId} is not valid id` });
   }
 
   next();
