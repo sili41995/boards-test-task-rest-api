@@ -1,10 +1,10 @@
+import { NextFunction, Response } from 'express';
+import jwt, { Secret } from 'jsonwebtoken';
 import { IAuthRequest } from '../types/auth.type';
 import { IDecodedToken } from '../types/types.type';
 import { httpError } from '../utils';
-import { NextFunction, Response } from 'express';
-import jwt, { Secret } from 'jsonwebtoken';
-import ctrlWrapper from './ctrlWrapper.middleware';
 import prisma from '../prisma';
+import ctrlWrapper from './ctrlWrapper.middleware';
 
 const { SECRET_KEY } = process.env;
 

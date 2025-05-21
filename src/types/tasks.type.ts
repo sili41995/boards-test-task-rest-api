@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import { SavedUser } from './auth.type';
 import { Task } from '@prisma/client';
+import { SavedUser } from './auth.type';
 import { IMutateByIdProps } from './funcs.type';
 
 export interface ITaskRequest extends Request {

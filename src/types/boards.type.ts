@@ -1,7 +1,7 @@
+import { Request } from 'express';
 import { Board } from '@prisma/client';
 import { SavedUser } from './auth.type';
 import { IMutateByIdProps } from './funcs.type';
-import { Request } from 'express';
 
 export interface IBoardRequest extends Request {
   user?: SavedUser;

@@ -1,6 +1,5 @@
 import Joi from 'joi';
-import { ErrorMessages, ProfileSettings } from '../constants';
-import { regExp } from '../constants';
+import { ErrorMessages, ProfileSettings, regExp } from '../constants';
 
 const nameSettings = Joi.string().messages({
   'any.required': ErrorMessages.nameReq,

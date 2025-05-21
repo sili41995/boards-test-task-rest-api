@@ -1,6 +1,6 @@
 import { Application } from 'express';
-import { authRouter, boardRouter, taskRouter } from './api';
 import { RouterPaths } from '../constants';
+import { authRouter, boardRouter, taskRouter } from './api';
 
 class AppRouter {
   constructor(private app: Application) {}
