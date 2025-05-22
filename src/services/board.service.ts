@@ -29,6 +29,9 @@ class BoardService {
         id,
         ownerId,
       },
+      include: {
+        tasks: true,
+      },
     });
 
     if (!result) {
