@@ -11,6 +11,12 @@ class BoardService {
       select: {
         id: true,
         title: true,
+        tasks: {
+          select: {
+            id: true,
+            title: true,
+          },
+        },
       },
     });
 
@@ -34,7 +40,7 @@ class BoardService {
 
   async add({ newBoard, ownerId }: IAddNewBoardProps): Promise<Board> {
     const data = { ...newBoard, ownerId };
-    console.log(data);
+
     const result = await prisma.board.create({ data });
 
     return result;
