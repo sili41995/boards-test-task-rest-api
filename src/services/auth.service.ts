@@ -8,7 +8,7 @@ import prisma from '../prisma';
 const { SECRET_KEY } = process.env;
 
 class AuthService {
-  async register(data: NewUser): Promise<User> {
+  async signUp(data: NewUser): Promise<SavedUser> {
     const { email, password } = data;
     const user = await prisma.user.findUnique({ where: { email } });
 
@@ -38,12 +38,18 @@ class AuthService {
     const result = await prisma.user.update({
       where: { email: newUserEmail },
       data: { token },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        token: true,
+      },
     });
 
     return result;
   }
 
-  async login({ email, password }: Credentials): Promise<User> {
+  async signIn({ email, password }: Credentials): Promise<SavedUser> {
     const user = await prisma.user.findUnique({ where: { email } });
     const isValidPassword = await bcrypt.compare(password as string, user?.password ?? '');
 
@@ -66,12 +72,18 @@ class AuthService {
     const result = await prisma.user.update({
       where: { email },
       data: { token },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        token: true,
+      },
     });
 
     return result;
   }
 
-  async logout({ email }: SavedUser): Promise<LogoutRes> {
+  async signOut({ email }: SavedUser): Promise<LogoutRes> {
     const result = await prisma.user.update({
       where: { email },
       data: { token: null },

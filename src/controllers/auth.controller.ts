@@ -8,24 +8,24 @@ export class AuthController {
     this.authService = authService;
   }
 
-  async register(req: Request, res: Response): Promise<void> {
-    const result = await this.authService.register(req.body);
+  async signUp(req: Request, res: Response): Promise<void> {
+    const result = await this.authService.signUp(req.body);
 
     res.status(201).json(result);
   }
 
-  async login(req: Request, res: Response): Promise<void> {
-    const result = await this.authService.login(req.body);
+  async signIn(req: Request, res: Response): Promise<void> {
+    const result = await this.authService.signIn(req.body);
 
     res.status(200).json(result);
   }
 
-  async logout(req: IAuthRequest, res: Response): Promise<void> {
+  async signOut(req: IAuthRequest, res: Response): Promise<void> {
     if (!req.user) {
       throw httpError({ status: 401 });
     }
 
-    const result = await this.authService.logout(req.user);
+    const result = await this.authService.signOut(req.user);
 
     res.status(200).json(result);
   }
